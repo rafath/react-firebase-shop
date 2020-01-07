@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
-const config = {
+module.exports = {
   entry: [
     'react-hot-loader/patch',
     './src/index.js'
@@ -15,8 +15,10 @@ const config = {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        use: 'babel-loader',
-        exclude: /node_modules/
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader"
+        }
       },
       {
         test: /\.css$/,
@@ -66,5 +68,3 @@ const config = {
     new LodashModuleReplacementPlugin
   ]
 };
-
-module.exports = config;
